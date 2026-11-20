@@ -24,11 +24,36 @@ class LinkedList {
     this.tail = newNode;
     this.length++;
   }
+
+  pop() {
+    if (!this.head) {
+      return undefined;
+    }
+
+    let temp = this.head;
+    let prev = this.head;
+
+    while (temp.next) {
+      prev = temp;
+      temp = prev.next;
+    }
+
+    this.tail = prev;
+    this.tail.next = null;
+    this.length--;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return temp;
+  }
 }
 
 const myLinkedList = new LinkedList();
-myLinkedList.push(10);
-// myLinkedList.push(10002);
-// myLinkedList.push(120);
+// myLinkedList.push(10);
+// myLinkedList.push(20);
+myLinkedList.pop();
 
 console.log(JSON.stringify(myLinkedList, null, 2));
