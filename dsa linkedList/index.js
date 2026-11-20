@@ -7,9 +7,9 @@ class Node {
 
 class LinkedList {
   constructor(value) {
-    this.head = new Node(value);
-    this.tail = this.head;
-    this.length = 1;
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
   }
 
   push(value) {
@@ -18,11 +18,13 @@ class LinkedList {
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
 
-    this.tail.next = newNode;
-    this.tail = newNode;
     this.length++;
+    return this;
   }
 
   pop() {
@@ -49,11 +51,26 @@ class LinkedList {
 
     return temp;
   }
+
+  unshift(value) {
+    const newNode = new Node(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    this.length++;
+    return this;
+  }
 }
 
 const myLinkedList = new LinkedList();
-// myLinkedList.push(10);
-// myLinkedList.push(20);
-myLinkedList.pop();
+myLinkedList.push(10);
+myLinkedList.push(20);
+myLinkedList.unshift(9);
 
-console.log(JSON.stringify(myLinkedList, null, 2));
+console.log(myLinkedList);
