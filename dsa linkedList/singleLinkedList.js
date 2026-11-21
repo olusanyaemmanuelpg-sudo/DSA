@@ -6,7 +6,7 @@ class Node {
 }
 
 class LinkedList {
-  constructor(value) {
+  constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
@@ -188,4 +188,4 @@ myLinkedList.insert(2, 30);
 // console.log(myLinkedList.getLast());
 // console.log(myLinkedList.get(1));
 // console.log(myLinkedList.set(1, 0));
-console.log(myLinkedList.clear());
+console.log(myLinkedList);
