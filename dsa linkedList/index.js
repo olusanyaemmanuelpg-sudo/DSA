@@ -101,7 +101,7 @@ class LinkedList {
   }
 
   get(index) {
-    let counter = 0;
+    let counter = 1;
     let temp = this.head;
 
     while (temp) {
@@ -115,6 +115,29 @@ class LinkedList {
 
     return undefined;
   }
+
+  set(index, value) {
+    // let temp = this.head;
+    // let counter = 1;
+
+    // while (temp) {
+    //   if (counter === index) {
+    //     temp.value = value;
+    //     return temp;
+    //   }
+
+    //   counter++;
+    //   temp = temp.next;
+    // }
+    // return undefined;
+
+    let temp = this.get(index);
+    if (temp) {
+      temp.value = value;
+      return true;
+    }
+    return false;
+  }
 }
 
 const myLinkedList = new LinkedList();
@@ -125,4 +148,5 @@ myLinkedList.unshift(9);
 // console.log(myLinkedList.getFirst());
 // console.log(myLinkedList.getLast());
 // console.log(myLinkedList.get(1));
+// console.log(myLinkedList.set(1, 0));
 console.log(myLinkedList);
