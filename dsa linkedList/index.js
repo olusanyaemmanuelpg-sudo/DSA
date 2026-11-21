@@ -1,6 +1,6 @@
 class Node {
   constructor(value) {
-    this.head = value;
+    this.value = value;
     this.next = null;
   }
 }
@@ -66,11 +66,29 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+
+    const old = this.head;
+    this.head = old.next;
+
+    old.next = null;
+    this.length--;
+
+    if (this.length === 0) {
+      this.tail = null;
+    }
+
+    return old;
+  }
 }
 
 const myLinkedList = new LinkedList();
 myLinkedList.push(10);
 myLinkedList.push(20);
 myLinkedList.unshift(9);
-
+myLinkedList.shift();
 console.log(myLinkedList);
