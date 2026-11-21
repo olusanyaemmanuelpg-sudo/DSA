@@ -101,7 +101,7 @@ class LinkedList {
   }
 
   get(index) {
-    let counter = 1;
+    let counter = 0;
     let temp = this.head;
 
     while (temp) {
@@ -138,12 +138,43 @@ class LinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      return this.unshift(value);
+    }
+
+    if (index === this.length) {
+      return this.push(value);
+    }
+
+    const newNode = new Node(value);
+
+    let temp = this.get(index - 1);
+
+    if (!temp) {
+      return undefined;
+    }
+
+    newNode.next = temp.next;
+    temp.next = newNode;
+
+    this.length++;
+
+    return newNode;
+  }
 }
 
 const myLinkedList = new LinkedList();
 myLinkedList.push(10);
 myLinkedList.push(20);
-myLinkedList.unshift(9);
+myLinkedList.push(40);
+myLinkedList.insert(2, 30);
+// myLinkedList.unshift(9);
 
 // console.log(myLinkedList.getFirst());
 // console.log(myLinkedList.getLast());
