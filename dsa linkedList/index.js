@@ -84,11 +84,45 @@ class LinkedList {
 
     return old;
   }
+
+  getFirst() {
+    if (!this.head) {
+      return undefined;
+    }
+    return this.head;
+  }
+
+  getLast() {
+    if (!this.tail) {
+      return undefined;
+    }
+
+    return this.tail;
+  }
+
+  get(index) {
+    let counter = 0;
+    let temp = this.head;
+
+    while (temp) {
+      if (counter === index) {
+        return temp;
+      }
+
+      counter++;
+      temp = temp.next;
+    }
+
+    return undefined;
+  }
 }
 
 const myLinkedList = new LinkedList();
 myLinkedList.push(10);
 myLinkedList.push(20);
 myLinkedList.unshift(9);
-myLinkedList.shift();
+
+// console.log(myLinkedList.getFirst());
+// console.log(myLinkedList.getLast());
+// console.log(myLinkedList.get(1));
 console.log(myLinkedList);
