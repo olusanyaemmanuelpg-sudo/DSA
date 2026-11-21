@@ -167,6 +167,14 @@ class LinkedList {
 
     return newNode;
   }
+
+  size() {
+    return this.length;
+  }
+
+  clear() {
+    this.head = null;
+  }
 }
 
 const myLinkedList = new LinkedList();
@@ -180,4 +188,4 @@ myLinkedList.insert(2, 30);
 // console.log(myLinkedList.getLast());
 // console.log(myLinkedList.get(1));
 // console.log(myLinkedList.set(1, 0));
-console.log(myLinkedList);
+console.log(myLinkedList.clear());
