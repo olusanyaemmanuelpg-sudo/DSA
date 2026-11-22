@@ -42,7 +42,7 @@ class DoublyLinkedList {
       temp = prev.next;
     }
 
-    this.tail.prev = null;
+    temp.prev = null;
     this.tail = prev;
     prev.next = null;
     this.length--;
@@ -54,12 +54,28 @@ class DoublyLinkedList {
 
     return temp;
   }
+
+  unshift(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    this.length++;
+    return newNode;
+  }
 }
 
 const linkedList = new DoublyLinkedList();
 linkedList.push(1);
 linkedList.push(2);
 linkedList.push(3);
-linkedList.pop();
+console.log(linkedList.pop());
+console.log(linkedList.unshift(0));
 
 console.log(linkedList);
